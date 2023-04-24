@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/02_02.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="ilbuni a"></div>
+      <div class="ilbuni b"></div>
+      <div class="ilbuni c"></div>
+    </div>
+
+    <script>
+      (function () {
+        const stage = document.querySelector('.stage');
+
+        function ilbuniHandler(e) {
+          if (e.target.classList.contains('stage')) {
+            return;
+          }
+          stage.removeChild(e.target);
+          setTimeout(() => {
+            stage.appendChild(e.target);
+          }, 1000);
+        }
+
+        stage.addEventListener('click', ilbuniHandler);
+      })();
+    </script>
+  </body>
+</html>
