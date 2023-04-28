@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition/Animation Event</title>
+    <style>
+      @keyframes ball-ani {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(200px, 200px);
+        }
+      }
+      .ball {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: red;
+        transition: 1s;
+        /* animation: ball-ani 1s 3 alternate forwards; */
+      }
+      .ball.end {
+        background: dodgerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball"></div>
+    <script>
+      const ball = document.querySelector('.ball');
+      //animationstart
+      //animationend
+      //animationiteration
+      ball.addEventListener('animationend', () => {
+        ball.classList.add('end');
+      });
+
+      ball.addEventListener('click', () => {
+        ball.style.animation = 'ball-ani 1s 3 alternate forwards';
+      });
+
+      ball.addEventListener('animationiteration', () => {
+        console.log('繰り返す');
+      });
+      // window.addEventListener('click', e => {
+      //   console.log(e.clientX, e.clientY);
+      //   ball.style.transform = `translate(${e.clientX - 15}px, ${
+      //     e.clientY - 15
+      //   }px)`;
+      //   ball.classList.add('end');
+      // });
+
+      // transitionend
+      // transitionstart
+      // ball.addEventListener('transitionend', () => {
+      //   ball.classList.remove('end');
+      // });
+    </script>
+  </body>
+</html>
