@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>requestAnimationFrame</title>
+    <style>
+      .btn {
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn">cancel</button>
+    <script>
+      let timeId;
+      let n = 0;
+      const btn = document.querySelector('.btn');
+
+      function sample() {
+        n++;
+        // if (n % 60 === 0) {
+        //   console.log('sample!');
+        // }
+        console.log('sample!');
+        timeId = requestAnimationFrame(sample);
+        if (n > 100) {
+          cancelAnimationFrame(timeId);
+        }
+      }
+      sample();
+      btn.addEventListener('click', () => cancelAnimationFrame(timeId));
+    </script>
+  </body>
+</html>
